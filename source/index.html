@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+  <title>Форма для добавления комментария</title>
+</head>
+<body>
+  <main class="page">
+    <section class="user-feedback">
+      <div class="container">
+        <h1 class="visually-hidden">Форма обратной связи</h1>
+        <h2 class="title">Оставьте свой отзыв</h1>
+        <form class="user-form" action="#" method="post">
+          <textarea class="user-form__text" name="" id="" cols="30" rows="10" placeholder="Начните писать" required></textarea>
+          <ul class="user-form__item-list">
+            <li class="user-form__item">
+              <label for="user-name"></label>
+              <input class="user-name-input" type="text" id="user-name" placeholder="Имя" required>
+            </li>
+            <li class="user-form__item">
+              <label for="user-mail"></label>
+              <input type="email" id="user-mail" placeholder="Email" required>
+            </li>
+            <li class="user-form__item">
+              <label for="user-mail"></label>
+              <input type="date" id="user-mail" placeholder="Дата">
+            </li>
+          </ul>
+          <button class="user-form__button" type="submit">Оставить отзыв</button>
+        </form>
+      </div>
+    </section>
+    <section class="user-comment">
+      <div class="container">
+        <h2 class="title">Отзывы клиентов</h1>
+        <ul class="user-comment__list">
+          <li class="user-comment__item">
+            <span class="user-comment__name">Вася</span>
+            <div class="user-comment__wrapper">
+              <div class="user-comment-text-wrapper">
+                <span class="user-comment__label label">Комментарий</span>
+                <p class="user-comment__text">Ну просто капец как все понравилось</p>
+              </div>
+              <div class="user-comment__date-wrapper">
+                <span class="user-coment__date-label label">Дата</span>
+                <time datetime="" class="user-comment__date">Вчера</time>
+              </div>
+              <div class="user-comment__button-wrapper">
+                <div class="user-comment__likes-wrapper">
+                  <button class="user-comment__like-button button" type="button"></button>
+                  <span class="likes-number">0</span>
+                </div>
+                <button class="user-comment__delete-button button" type="button"></button>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+  <script src="./js/main.js"></script>
+</body>
+</html>

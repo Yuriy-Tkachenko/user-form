@@ -1,0 +1,1 @@
+let heart=document.querySelector(".user-comment__like-button"),likesNumber=document.querySelector(".likes-number"),counter=0;

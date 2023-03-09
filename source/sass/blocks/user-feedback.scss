@@ -1,0 +1,54 @@
+.user-feedback {
+  margin-bottom: 60px;
+}
+
+.title {
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 29px;
+  text-align: left;
+}
+
+.user-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-form__text {
+  font-size: 18px;
+  line-height: 17px;
+  resize: none;
+  padding: 15px;
+  border-radius: 20px;
+  background-color: $firm-grey;
+  width: 800px;
+  margin-bottom: 40px;
+}
+
+.user-form__item-list {
+  display: flex;
+  width: 800px;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.user-form__item input  {
+  font-size: 18px;
+  line-height: 17px;
+  color: $firm-black;
+  padding: 18px;
+  border-radius: 20px;
+  background-color: $firm-grey;
+  border: 1px solid $firm-black;
+}
+
+.user-form__button {
+  font-size: 18px;
+  line-height: 17px;
+  padding: 18px;
+  color: $firm-white;
+  background-color: $firm-blue;
+  border: none;
+  border-radius: 20px;
+}
