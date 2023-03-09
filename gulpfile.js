@@ -48,5 +48,5 @@ const watcher = () => {
 }
 
 exports.default = gulp.series(
-  styles, scripts, server, watcher
+  styles, server, watcher
 );
