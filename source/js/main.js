@@ -1,75 +1,64 @@
-// Переменные для счетчика лайков
-const likeButton = document.querySelector('.user-comment__like-button');
-const likesNumber = document.querySelector('.likes-number');
-// Переменные для кнопки удаления
-const deleteButton = document.querySelector('.user-comment__delete-button');
-// Переменные для добавления нового комментария
+// Переменные для работы с содержимым формы
 const userForm = document.querySelector('.user-form');
-const userCommentList = document.querySelector('.user-comment__list');
-const userComment = document.querySelector('.user-comment__item');
-const userName = document.querySelector('.user-name-input');
-const commentLabel = document.querySelector('.user-comment__label');
-const userCommentText = document.querySelector('.user-form__text');
-const dateLabel = document.querySelector('.user-coment__date-label');
+const comments = document.querySelector('.user-comment');
+const userCommentList = comments.querySelector('.user-comment__list');
+const userCommentItem = userCommentList.children;
+const userName = userForm.querySelector('.user-name-input');
+const userMail = userForm.querySelector('.user-mail-input');
+const userCommentDate = userForm.querySelector('.user-date-input');
+const userComment = userForm.querySelector('.user-form__text');
+// Переменные для работы с шаблоном
+const commentTemplate = document.querySelector('#comment-template').content;
+const commentItem = commentTemplate.querySelector('.user-comment__item');
 
-// Добавление комментариев
 userForm.onsubmit = function (evt) {
   evt.preventDefault();
-  // Создание пункта
-  let newCommentItem = document.createElement('li');
-  newCommentItem.classList.add('user-comment__item');
+  const newCommentItem = commentItem.cloneNode(true);
 
-  // Создание поля имени
-  let newUserName = document.createElement('span');
-  newUserName.classList.add('user-comment__name');
-  newUserName.textContent = userName.value;
-  newCommentItem.append(newUserName);
+  const addLike = function () {
+    const likeButton = newCommentItem.querySelector('.user-comment__like-button');
+    const likesNumber = newCommentItem.querySelector('.likes-number');
 
-  // Создание оббертки комментария
-  let commentWrapper = document.createElement('div');
-  commentWrapper.classList.add('user-comment__wrapper');
-  newCommentItem.append(commentWrapper);
-
-  // Создание оббертки текста
-  let textWrapper = document.createElement('div');
-  textWrapper.classList.add('user-comment-text-wrapper');
-  commentWrapper.append(textWrapper);
-
-  // Создание комментария
-  let commentText = document.createElement('p');
-  commentText.classList.add('user-comment__text');
-  commentText.textContent = userCommentText.value;
-  commentLabel.classList.add('label');
-  textWrapper.append(commentLabel.cloneNode(true));
-  textWrapper.append(commentText);
-
-  // Создание оббертки даты
-  let dateWrapper = document.createElement('div');
-  dateWrapper.classList.add('user-comment__date-wrapper');
-  commentWrapper.append(dateWrapper);
-
-  // Создание даты
-  let dateValue = document.createElement('time');
-  dateValue.classList.add('user-comment__date');
-  dateLabel.classList.add('label');
-  dateWrapper.append(dateLabel.cloneNode(true));
-  dateWrapper.append(dateValue);
-
-  // Создание оббертки кнопок
-  let buttonWrapper = document.createElement('div');
-  buttonWrapper.classList.add('user-comment__button-wrapper');
-  commentWrapper.append(buttonWrapper);
-
-  // Создание оббертки кнопки лайка
-  let likesWrapper = document.createElement('div');
-  likesWrapper.classList.add('user-comment__likes-wrapper');
-  buttonWrapper.append(likesWrapper);
-  buttonWrapper.append(deleteButton.cloneNode(true));
+    likeButton.addEventListener('click', function () {
+      if (likeButton.classList.contains('added')) {
+        likesNumber.textContent--;
+      } else {
+        likesNumber.textContent++;
+      }
   
-  // Создание счетчика
-  likesWrapper.append(likeButton.cloneNode(true));
-  likesWrapper.append(likesNumber.cloneNode(true));
+      likeButton.classList.toggle('added');
+    });
+  }
+  
+  const removeItemHandler = function (item) {
+    const deleteButton = newCommentItem.querySelector('.user-comment__delete-button');
 
+    deleteButton.addEventListener('click', function () {
+      item.remove();
+    });
+  }
+  
+  for (let i = 0; i < userCommentItem.length; i++) {
+    removeItemHandler(userCommentItem[i]);
+  }
+  
+  // Добавление нового имени
+  const name = newCommentItem.querySelector('.user-comment__name');
+  name.textContent = userName.value;
+  // Добавление нового комментария
+  const comment = newCommentItem.querySelector('.user-comment__text');
+  comment.textContent = userComment.value;
+  // Добавление новой даты
+  const date = newCommentItem.querySelector('.user-comment__date');
+  date.textContent = userCommentDate.value;
+  // Добавление функционала кнопок к новому комментарию
+  removeItemHandler(newCommentItem);
+  addLike ();
   // Добавление нового комментария в список
-  userCommentList.append(newCommentItem);
+  userCommentList.appendChild(newCommentItem);
+  // Очистка полей
+  userName.value = '';
+  userMail.value = '';
+  userComment.value = '';
+  userCommentDate.value = '';
 }

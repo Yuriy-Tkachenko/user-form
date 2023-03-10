@@ -15,19 +15,23 @@
         <h1 class="visually-hidden">Форма обратной связи</h1>
         <h2 class="title">Оставьте свой отзыв</h1>
         <form class="user-form" action="#" method="post">
-          <textarea class="user-form__text" name="" id="" cols="30" rows="10" placeholder="Начните писать" required></textarea>
+          <textarea class="user-form__text" name="" id="" cols="30" rows="10" placeholder="Начните писать" ></textarea>
           <ul class="user-form__item-list">
-            <li class="user-form__item">
+            <li class="user-form__item name-item">
               <label for="user-name"></label>
-              <input class="user-name-input" type="text" id="user-name" placeholder="Имя" required>
+              <input class="user-name-input" type="text" id="user-name" placeholder="Имя" >
             </li>
-            <li class="user-form__item">
+            <li class="user-form__item mail-item">
               <label for="user-mail"></label>
-              <input type="email" id="user-mail" placeholder="Email" required>
+              <input class="user-mail-input" type="email" id="user-mail" placeholder="Email" >
             </li>
-            <li class="user-form__item">
-              <label for="user-mail"></label>
-              <input type="date" id="user-mail" placeholder="Дата">
+            <li class="user-form__item date-item">
+              <label for="user-date"></label>
+              <input class="user-date-input" type="date" id="user-date" placeholder="Дата">
+            </li>
+            <li class="user-form__item time-item">
+              <label for="user-date"></label>
+              <input type="time" min="00:01" max="24:00" autocomplete>
             </li>
           </ul>
           <button class="user-form__button" type="submit">Оставить отзыв</button>
@@ -38,30 +42,32 @@
       <div class="container">
         <h2 class="title">Отзывы клиентов</h1>
         <ul class="user-comment__list">
-          <li class="user-comment__item">
-            <span class="user-comment__name">Вася</span>
-            <div class="user-comment__wrapper">
-              <div class="user-comment-text-wrapper">
-                <span class="user-comment__label label">Комментарий</span>
-                <p class="user-comment__text">Ну просто капец как все понравилось</p>
-              </div>
-              <div class="user-comment__date-wrapper">
-                <span class="user-coment__date-label label">Дата</span>
-                <time datetime="" class="user-comment__date">Вчера</time>
-              </div>
-              <div class="user-comment__button-wrapper">
-                <div class="user-comment__likes-wrapper">
-                  <button class="user-comment__like-button button" type="button"></button>
-                  <span class="likes-number">0</span>
+          <template id="comment-template">
+            <li class="user-comment__item">
+              <span class="user-comment__name"></span>
+              <div class="user-comment__wrapper">
+                <div class="user-comment-text-wrapper">
+                  <span class="user-comment__label label">Комментарий</span>
+                  <p class="user-comment__text"></p>
                 </div>
-                <button class="user-comment__delete-button button" type="button"></button>
+                <div class="user-comment__date-wrapper">
+                  <span class="user-coment__date-label label">Дата</span>
+                  <time datetime="" class="user-comment__date"></time>
+                </div>
+                <div class="user-comment__button-wrapper">
+                  <div class="user-comment__likes-wrapper">
+                    <button class="user-comment__like-button button" type="button"></button>
+                    <span class="likes-number">0</span>
+                  </div>
+                  <button class="user-comment__delete-button button" type="button"></button>
+                </div>
               </div>
-            </div>
-          </li>
+            </li>
+          </template>
         </ul>
       </div>
     </section>
   </main>
-  <script src="./js/main.js"></script>
+  <script src="./js/main.js" defer></script>
 </body>
 </html>
